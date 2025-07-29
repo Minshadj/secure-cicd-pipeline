@@ -17,10 +17,9 @@ pipeline {
 
         stage('SAST Scan') {
             steps {
-                echo "Running SAST scan with Semgrep..."
                 sh '''
-                    /usr/bin/docker run --rm -v "${WORKSPACE}/app":/src returntocorp/semgrep --config "p/default" --error
-                '''
+                  /usr/bin/docker run --rm -v "${WORKSPACE}/app":/src returntocorp/semgrep:latest semgrep --config "p/default" --error
+                   '''
             }
         }
 
