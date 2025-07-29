@@ -24,9 +24,9 @@ pipeline {
                 echo "Running SAST scan..."
                 // We explicitly point the volume mount to the 'app' subdirectory
                 // within the Jenkins workspace.
-                sh '''
-                    /usr/bin/docker run --rm -v "${WORKSPACE}/app":/src returntocorp/semgrep:latest semgrep --config "p/default" --error
-                '''
+                 sh '''
+                 /usr/bin/docker run --rm --memory="1g" -v "${WORKSPACE}/app":/src returntocorp/semgrep:latest semgrep --config "p/default" --error
+                    '''
             }
         }
 
